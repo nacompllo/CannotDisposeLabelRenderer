@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<labelrender:ContentPageBase  xmlns="http://xamarin.com/schemas/2014/forms"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              x:Name="MainView"
+                              xmlns:labelrender="clr-namespace:LabelRender"
+                              x:Class="LabelRender.MainPage">
+    <StackLayout>
+        <CollectionView x:Name="collectionViewCars"
+                        ItemsSource="{Binding CarsList}"
+                        BackgroundColor="White"
+                        FlowDirection="MatchParent"       
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Model}"
+                               FontSize="{Binding Source={x:Reference MainView}, Path=BindingContext.SmallFontSize}"
+                               TextColor="Black"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button x:Name="btnAdd"
+                Text="Add Car"
+                Command="{Binding AddCarCommand}"/>
+    </StackLayout>
+</labelrender:ContentPageBase>
